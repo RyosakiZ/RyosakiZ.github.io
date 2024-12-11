@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watcharaporn & Puwit's Wedding Invitation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+/*             background: linear-gradient(135deg, #C1E1C1 0%, #b4d3b2 100%);
+ */            font-family: 'Cormorant Garamond', serif;
+        }
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+        }
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            transform: scale(1.1);
+        }
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .music-control:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,1);
+        }
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .circle {
+        position: relative;
+        transition: transform 0.3s ease;
+        }
+
+        .circle:hover {
+            transform: scale(1.1);
+        }
+
+        .circle:hover .tooltip {
+            display: block;
+        }
+
+        .circle:active .tooltip {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Music Control -->
+    <div id="music-control" class="music-control">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8B4513" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+        </svg>
+        <audio id="background-music" loop>
+            <source src="assets/bg.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Invitation Sections -->
+    <section id="hero" class="section relative text-center text-white">
+<!--         <div class="parallax-bg" style="background-image: url('assets/head1.jpg');"></div>
+ -->        <div class="relative z-10 max-w-2xl px-4">
+            <h1 class="text-6xl font-['Great_Vibes'] mb-6 reveal-text text-[#8B4513]">Watcharaporn & Puwit</h1>
+            <p class="text-3xl mb-12 reveal-text text-[#5D4037]">Celebrating Our Love</p>
+            <!-- <p class="text-3xl font-['Great_Vibes'] mb-12 reveal-text text-[#8B4513]">11 January 2025</p> -->
+            <p class="text-5xl font-['Great_Vibes'] mb-12 reveal-text text-[#8B4513]">11 January 2025</p>
+            <div class="bg-white/20 backdrop-blur-sm p-8 rounded-xl reveal-text">
+            <p class="text-xl text-[#5D4037]">Join us for a magical celebration of love and commitment</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="our-story" class="section bg-[#FFF3E0]">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <h2 class="text-5xl mb-12 reveal-text text-[#795548]">Our Love Story</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg reveal-text">
+                    <h3 class="text-2xl mb-4 text-[#6D4C41]">How We Met</h3>
+                    <img src="/assets/howwemet.jpg" alt="How We Met" class="w-full h-64 object-cover rounded-xl mb-4">
+                    <p>A serendipitous encounter that changed our lives forever</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg reveal-text">
+                    <h3 class="text-2xl mb-4 text-[#6D4C41]">The Proposal</h3>
+                    <img src="/assets/proposal.jpg" alt="The Proposal" class="w-full h-64 object-cover rounded-xl mb-4">
+                    <p>A moment of pure love and commitment under the starry sky</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section relative my-8">
+        <div class="max-w-5xl mx-auto text-center px-4">
+            <h2 class="text-5xl mb-12 reveal-text text-[#795548]">Our Moments</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <img src="/assets/moment1.jpg" alt="Moment 1" class="w-full h-72 object-cover rounded-xl reveal-text">
+                <img src="/assets/moment2.jpg" alt="Moment 2" class="w-full h-72 object-cover rounded-xl reveal-text">
+                <img src="/assets/moment3.jpg" alt="Moment 3" class="w-full h-72 object-cover rounded-xl reveal-text">
+                <img src="/assets/moment4.jpg" alt="Moment 4" class="w-full h-72 object-cover rounded-xl reveal-text">
+                <img src="/assets/moment5.jpg" alt="Moment 5" class="w-full h-72 object-cover rounded-xl reveal-text">
+                <img src="/assets/moment6.jpg" alt="Moment 6" class="w-full h-72 object-cover rounded-xl reveal-text">
+                <img src="/assets/moment7.jpg" alt="Moment 7" class="w-full h-72 object-cover rounded-xl reveal-text">
+                <img src="/assets/moment8.jpg" alt="Moment 8" class="w-full h-72 object-cover rounded-xl reveal-text">
+            </div>
+        </div>
+    </section>
+
+    <section id="wedding-details" class="section bg-[#FFF3E0]">
+        <!--         <div class="parallax-bg" style="background-image: url('assets/head2.jpg');"></div>
+         -->        <div class="relative z-10 max-w-2xl mx-auto text-center px-4">
+                    <h2 class="text-5xl mb-12 reveal-text text-[#8B4513]">Wedding Details</h2>
+                    <div class="bg-white/70 backdrop-blur-sm p-8 rounded-xl shadow-lg reveal-text">
+                        <div class="mb-6">
+                            <h3 class="text-2xl text-[#6D4C41]">Date</h3>
+                            <p class="text-xl font-['Great_Vibes']">11 January 2025</p>
+                        </div>
+                        <div class="mb-6">
+                            <h3 class="text-2xl text-[#6D4C41]">Ceremony</h3>
+                            <a href="https://maps.app.goo.gl/guSC4HLL52GYNqN89"><p class="text-xl">ข่วงจันทร์ รีสอร์ท, เชียงใหม่</p></a>
+                            <!-- <a href="https://maps.app.goo.gl/guSC4HLL52GYNqN89">Location</a> -->
+                        </div>
+                        <div class="mb-6 text-center">
+                            <h3 class="text-2xl text-[#6D4C41]">Theme</h3>
+                            <div class="circle-container mt-4 flex justify-center gap-3">
+                                <!-- Circle -->
+                                <div class="circle w-5 h-5 rounded-full bg-[#397D54] cursor-pointer relative">
+                                    <!-- Tooltip -->
+                                    <div class="tooltip hidden absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 bg-white text-[#6D4C41] py-1 px-2 rounded shadow">
+                                        #397D54
+                                    </div>
+                                </div>
+                                <div class="circle w-5 h-5 rounded-full bg-[#9FD4A3] cursor-pointer relative">
+                                    <!-- Tooltip -->
+                                    <div class="tooltip hidden absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 bg-white text-[#6D4C41] py-1 px-2 rounded shadow">
+                                        #9FD4A3
+                                    </div>
+                                </div>
+                                <div class="circle w-5 h-5 rounded-full bg-[#BEE3BA] cursor-pointer relative">
+                                    <!-- Tooltip -->
+                                    <div class="tooltip hidden absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 bg-white text-[#6D4C41] py-1 px-2 rounded shadow">
+                                        #BEE3BA
+                                    </div>
+                                </div>
+                                <div class="circle w-5 h-5 rounded-full bg-[#FFD1DC] cursor-pointer relative">
+                                    <!-- Tooltip -->
+                                    <div class="tooltip hidden absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 bg-white text-[#6D4C41] py-1 px-2 rounded shadow">
+                                        #FFD1DC
+                                    </div>
+                                </div>
+                                <div class="circle w-5 h-5 rounded-full bg-[#FFEFCB] cursor-pointer relative">
+                                    <!-- Tooltip -->
+                                    <div class="tooltip hidden absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 bg-white text-[#6D4C41] py-1 px-2 rounded shadow">
+                                        #FFEFCB
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl text-[#6D4C41]">Timeline</h3>
+                            <p class="text-xl">07.39 AM - Buddhist ceremony</p>
+                            <p class="text-xl">09.09 AM - Khan Maak Procession</p>
+                            <p class="text-xl">10.09 AM - Lanna Thread Tightening</p>
+                            <p class="text-xl">11.09 AM - Lunch</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    <section id="rsvp" class="section relative">
+<!--         <div class="parallax-bg" style="background-image: url('assets/head3.jpg');"></div>
+ -->        <div class="relative z-10 max-w-2xl mx-auto text-center px-4">
+            <h2 class="text-xl mb-12 reveal-text text-[#8B4513]">Please Reply and Join Us in Celebrating the Joy of Watcharaporn & Puwit!</h2>
+            <div class="bg-white/70 backdrop-blur-sm p-8 rounded-xl shadow-lg reveal-text">
+                <p class="text-xl mb-6">Kindly respond by December 31st, 2024</p>
+                <a href="https://forms.gle/nrrgxRoLhDqhvYpV8" 
+                   class="inline-block bg-[#8B4513] text-white px-8 py-4 rounded-full hover:bg-[#6D4C41] transition-colors text-xl">
+                    Confirm Attendance
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Music Control
+        const musicControl = document.getElementById('music-control');
+        const audio = document.getElementById('background-music');
+        let isPlaying = false;
+
+        musicControl.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                musicControl.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8B4513" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 18V5l12-2v13"></path>
+                        <circle cx="6" cy="18" r="3"></circle>
+                        <circle cx="18" cy="16" r="3"></circle>
+                    </svg>
+                `;
+            } else {
+                try {
+                    audio.play();
+                    // Change the icon to pause
+                    musicIcon.innerHTML = `
+                        <rect x="6" y="4" width="4" height="16"></rect>
+                        <rect x="14" y="4" width="4" height="16"></rect>
+                    `;
+                } catch (error) {
+                    console.error("Error playing audio:", error);
+                }
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('.section').forEach((section) => {
+            gsap.fromTo(section, 
+                { opacity: 0 }, 
+                { 
+                    opacity: 1, 
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+
+            const revealTexts = section.querySelectorAll('.reveal-text');
+            revealTexts.forEach((text, index) => {
+                gsap.fromTo(text, 
+                    { 
+                        opacity: 0, 
+                        y: 50 
+                    },
+                    { 
+                        opacity: 1, 
+                        y: 0,
+                        duration: 1,
+                        delay: index * 0.2,
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 80%",
+                            end: "bottom 20%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                );
+            });
+        });
+
+        // Parallax Effect
+        gsap.utils.toArray('.parallax-bg').forEach((bg) => {
+            gsap.fromTo(bg, 
+                { scale: 1.1, y: 0 }, 
+                { 
+                    scale: 1, 
+                    y: -100,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: bg.closest('.section'),
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+</html>
